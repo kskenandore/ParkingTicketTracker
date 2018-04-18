@@ -1,0 +1,14 @@
+{%  extends "base.html" %}
+{% block content %}
+    <a href="/logout/" class="logout">Logout</a>
+    <h1>Ticket Tracker</h1>
+    <p>Please enter your parking ticket</p>
+
+    <form action="{{ action }}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" value="{{ source }}" name="source"/>
+        <input type="hidden" value="{{ id }}" name="id"/>
+        <input type="submit"/>
+    </form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{%  extends "base.html" %}
+{% block content %}
+    <div>
+        <a href="/logout/" class="logout">Logout</a>
+        <h1>Logged Tickets</h1>
+        <br/>
+
+        <table border="0">
+            <tr>
+                <th>User</th>
+                <th>Date Submitted</th>
+                <th>Time Marked</th>
+                <th>Time Issued</th>
+                <th>Parking Limit</th>
+                <th>Region</th>
+                <th>Weather</th>
+                <th>Options</th>
+                <th></th>
+            </tr>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.username.username }}</td>
+                <td>{{ ticket.date_received }}</td>
+                <td class="time">Marked: {{ ticket.time_marked }}</td>
+                <td class="time">Issued: {{ ticket.time_issued }}</td>
+                <td>{{ ticket.time_limit }} Hour Parking</td>
+                <td>Region: {{ ticket.region }}</td>
+                <td>Weather: {{ ticket.weather }}</td>
+                <td><a href="/update/?id={{ ticket.id }}">Update</a></td>
+                <td><a href="/delete/?id={{ ticket.id }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    <a href="/" >Add Another Ticket</a>
+    </div>
+{% endblock %}
